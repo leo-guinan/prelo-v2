@@ -1,14 +1,28 @@
 services:
   investor-dashboard:
-    build: ./investor-dashboard
+    build:
+      context: ./investor-dashboard
+      target: build
     ports:
       - "3000:3000"
-    depends_on:
-      - backend
-  
-  pitch-deck-review:
-    build: ./pitch-deck-review
-    ports:
-      - "8080:8080"
+    volumes:
+      - ./investor-dashboard:/app
+      - /app/node_modules
     environment:
       - NODE_ENV=development
+      - VITE_GEMINI_API_KEY=${GEMINI_API_KEY}
+    command: npm run dev
+  
+  pitch-deck-review:
+    build:
+      context: ./pitch-deck-review
+      target: build
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./pitch-deck-review:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - VITE_GEMINI_API_KEY=${GEMINI_API_KEY}
+    command: npm run dev
