@@ -1,0 +1,6 @@
+[submodule "pitch-deck-review"]
+	path = pitch-deck-review
+	url = git@github.com:leo-guinan/pitch-deck-review.git
+[submodule "investor-dashboard"]
+	path = investor-dashboard
+	url = git@github.com:leo-guinan/investor-dashboard.git

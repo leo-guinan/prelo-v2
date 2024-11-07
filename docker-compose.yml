@@ -1,0 +1,14 @@
+services:
+  investor-dashboard:
+    build: ./investor-dashboard
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+  
+  pitch-deck-review:
+    build: ./pitch-deck-review
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=development
